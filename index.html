@@ -262,20 +262,6 @@ gap:12px;
 .server-item .status{font-size:11px;color:var(--neon-green);display:flex;align-items:center;gap:6px;}
 .server-item .status::before{content:"";width:5px;height:5px;background:var(--neon-green);border-radius:50%;box-shadow:0 0 10px var(--neon-green);animation:pulse-dot 1.2s ease-in-out infinite;}
 
-.copy-btn{
-background:transparent;
-border:1px solid var(--border);
-color:rgba(255,255,255,0.3);
-padding:6px 14px;
-font-family:'Share Tech Mono',monospace;
-font-size:10px;
-cursor:pointer;
-transition:all 0.3s ease;
-letter-spacing:0.05em;
-white-space:nowrap;
-}
-.copy-btn:hover{border-color:var(--neon-blue);color:var(--neon-blue);}
-
 footer{
 margin-top:60px;
 padding:24px 0 20px;
@@ -300,7 +286,6 @@ footer a:hover{color:var(--neon-blue);}
 .server-item{flex-direction:column;align-items:stretch;text-align:center;}
 .server-item .ip{font-size:14px;}
 .server-item .info{min-width:auto;}
-.copy-btn{width:100%;}
 .cyber-header{flex-direction:column;align-items:flex-start;gap:8px;}
 .logo{font-size:22px;}
 footer{flex-direction:column;text-align:center;}
@@ -350,19 +335,17 @@ Discord
 <div class="server-item">
 <div class="info">
 <span class="name">CS 1.6 ZM & LVL SYSTEM</span>
-<span class="ip" id="serverIP1">94.190.4.0:5006</span>
+<span class="ip">94.190.4.0:5006</span>
 <span class="status">Online</span>
 </div>
-<button class="copy-btn" onclick="copyIP('94.190.4.0:5006',this)">COPY IP</button>
 </div>
 
 <div class="server-item">
 <div class="info">
 <span class="name">CS 1.6 ZE & NEMESIS MODE</span>
-<span class="ip" id="serverIP2">94.190.4.0:5005</span>
+<span class="ip">94.190.4.0:5005</span>
 <span class="status">Online</span>
 </div>
-<button class="copy-btn" onclick="copyIP('94.190.4.0:5005',this)">COPY IP</button>
 </div>
 
 </div>
@@ -377,27 +360,6 @@ Discord
 </div>
 
 <script>
-function copyIP(ip,btn){
-if(navigator.clipboard && navigator.clipboard.writeText){
-navigator.clipboard.writeText(ip).then(function(){
-btn.textContent='✔ COPIED';
-setTimeout(function(){btn.textContent='COPY IP';},2000);
-}).catch(function(){
-btn.textContent='✔ COPIED';
-setTimeout(function(){btn.textContent='COPY IP';},2000);
-});
-}else{
-var temp=document.createElement('input');
-temp.value=ip;
-document.body.appendChild(temp);
-temp.select();
-document.execCommand('copy');
-document.body.removeChild(temp);
-btn.textContent='✔ COPIED';
-setTimeout(function(){btn.textContent='COPY IP';},2000);
-}
-}
-
 document.querySelectorAll('.btn').forEach(function(btn){
 btn.addEventListener('click',function(e){
 var rect=this.getBoundingClientRect();
