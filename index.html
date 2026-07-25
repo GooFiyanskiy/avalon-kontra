@@ -50,16 +50,51 @@ from{opacity:0;}
 to{opacity:1;}
 }
 @keyframes biohazard-spin{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
+0%{transform:rotate(0deg) scale(1);}
+25%{transform:rotate(90deg) scale(1.1);text-shadow:0 0 80px rgba(0,212,255,0.8),0 0 150px rgba(123,47,252,0.6);}
+50%{transform:rotate(180deg) scale(1);text-shadow:0 0 120px rgba(255,107,157,0.8),0 0 200px rgba(255,0,85,0.4);}
+75%{transform:rotate(270deg) scale(1.1);text-shadow:0 0 80px rgba(0,212,255,0.8),0 0 150px rgba(123,47,252,0.6);}
+100%{transform:rotate(360deg) scale(1);text-shadow:0 0 60px rgba(0,212,255,0.3);}
+}
+@keyframes biohazard-pulse{
+0%,100%{opacity:1;transform:scale(1);}
+50%{opacity:0.7;transform:scale(1.15);}
+}
+@keyframes sparkle{
+0%{opacity:0;transform:translate(0,0) scale(0);}
+50%{opacity:1;transform:translate(var(--tx),var(--ty)) scale(1);}
+100%{opacity:0;transform:translate(var(--tx2),var(--ty2)) scale(0);}
+}
+.biohazard-wrap{
+display:inline-block;
+position:relative;
+font-size:inherit;
+line-height:1;
 }
 .biohazard{
 display:inline-block;
-animation:biohazard-spin 6s linear infinite;
+animation:biohazard-spin 4s ease-in-out infinite, biohazard-pulse 2s ease-in-out infinite;
 font-size:inherit;
 line-height:1;
-text-shadow:0 0 60px rgba(0,212,255,0.3);
+background:linear-gradient(135deg, #00d4ff, #7b2ffc, #ff6b9d, #00d4ff);
+background-size:300% 300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:biohazard-spin 4s ease-in-out infinite, biohazard-pulse 2s ease-in-out infinite, gradient-shift 3s ease-in-out infinite;
+filter:drop-shadow(0 0 20px rgba(0,212,255,0.5));
 }
+.biohazard-spark{
+position:absolute;
+font-size:8px;
+color:var(--accent);
+pointer-events:none;
+opacity:0;
+animation:sparkle 1.2s ease-out infinite;
+}
+.biohazard-spark:nth-child(2){top:-20%;left:80%;animation-delay:0.2s;--tx:15px;--ty:-25px;--tx2:30px;--ty2:-40px;color:#ff6b9d;}
+.biohazard-spark:nth-child(3){top:90%;left:10%;animation-delay:0.5s;--tx:-20px;--ty:15px;--tx2:-40px;--ty2:30px;color:#7b2ffc;}
+.biohazard-spark:nth-child(4){top:10%;left:-10%;animation-delay:0.8s;--tx:-25px;--ty:-15px;--tx2:-45px;--ty2:-30px;color:#ffd700;}
+.biohazard-spark:nth-child(5){top:80%;left:90%;animation-delay:1.0s;--tx:20px;--ty:20px;--tx2:40px;--ty2:40px;color:#00ff88;}
 
 body{
 background:var(--bg);
@@ -562,6 +597,13 @@ border-radius:50%;
 display:inline-block;
 animation:pulse-dot 1.2s ease-in-out infinite;
 }
+.server-item .status .lang-text{
+display:inline-block;
+transition:opacity 0.4s ease;
+}
+.server-item .status .lang-text.hidden{
+display:none;
+}
 
 footer{
 margin-top:28px;
@@ -631,8 +673,8 @@ animation:lang-slide 0.3s ease forwards;
 <span class="lang-text active" data-lang="eng">Multiplayer FPS</span>
 </div>
 <div class="title">
-<span class="lang-text hidden" data-lang="rus"><span class="biohazard">☣</span></span>
-<span class="lang-text active" data-lang="eng"><span class="biohazard">☣</span></span>
+<span class="lang-text hidden" data-lang="rus"><span class="biohazard-wrap"><span class="biohazard">☣</span><span class="biohazard-spark">✦</span><span class="biohazard-spark">✧</span><span class="biohazard-spark">✦</span><span class="biohazard-spark">✧</span></span></span>
+<span class="lang-text active" data-lang="eng"><span class="biohazard-wrap"><span class="biohazard">☣</span><span class="biohazard-spark">✦</span><span class="biohazard-spark">✧</span><span class="biohazard-spark">✦</span><span class="biohazard-spark">✧</span></span></span>
 </div>
 <div class="sub">
 <span class="lang-text hidden" data-lang="rus">First‑Person Shooter</span>
@@ -680,28 +722,28 @@ YouTube
 <div class="info">
 <span class="name">CS 1.6 ZM & LVL SYSTEM</span>
 <span class="ip">94.190.4.0:5006</span>
-<span class="status"><span class="dot"></span>Offline</span>
+<span class="status"><span class="dot"></span><span class="lang-text hidden" data-lang="rus">Оффлайн</span><span class="lang-text active" data-lang="eng">Offline</span></span>
 </div>
 </div>
 <div class="server-item">
 <div class="info">
 <span class="name">CS 1.6 ZE & NEMESIS MODE</span>
 <span class="ip">94.190.4.0:5005</span>
-<span class="status"><span class="dot"></span>Offline</span>
+<span class="status"><span class="dot"></span><span class="lang-text hidden" data-lang="rus">Оффлайн</span><span class="lang-text active" data-lang="eng">Offline</span></span>
 </div>
 </div>
 <div class="server-item">
 <div class="info">
 <span class="name">CS 1.6 DEATHMATCH</span>
 <span class="ip">94.190.4.0:5002</span>
-<span class="status"><span class="dot"></span>Offline</span>
+<span class="status"><span class="dot"></span><span class="lang-text hidden" data-lang="rus">Оффлайн</span><span class="lang-text active" data-lang="eng">Offline</span></span>
 </div>
 </div>
 <div class="server-item">
 <div class="info">
 <span class="name">JAIL | Побег из Ада 12+</span>
 <span class="ip">94.190.4.0:5003</span>
-<span class="status"><span class="dot"></span>Offline</span>
+<span class="status"><span class="dot"></span><span class="lang-text hidden" data-lang="rus">Оффлайн</span><span class="lang-text active" data-lang="eng">Offline</span></span>
 </div>
 </div>
 </div>
@@ -769,7 +811,7 @@ YouTube
 <span class="lang-text hidden" data-lang="rus">Ассистент (ZM сервер)</span>
 <span class="lang-text active" data-lang="eng">Assistant (ZM Server)</span>
 </div>
-<a href="https://t.me/metimorina" target="_blank" class="contact">@meti_morina</a>
+<a href="https://t.me/meti_morina" target="_blank" class="contact">@meti_morina</a>
 </div>
 
 </div>
