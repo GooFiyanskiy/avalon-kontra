@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>☣ KONTRA — Multiplayer FPS</title>
+<title>KONTRA — Multiplayer FPS</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -32,11 +32,6 @@
 0%,100%{opacity:1;box-shadow:0 0 20px rgba(0,255,136,0.5),0 0 40px rgba(0,255,136,0.2);}
 50%{opacity:0.8;box-shadow:0 0 40px rgba(0,255,136,0.8),0 0 80px rgba(0,255,136,0.4);}
 }
-@keyframes biohazard-spin{
-0%{transform:rotate(0deg) scale(1);filter:drop-shadow(0 0 20px rgba(255,107,157,0.3));}
-50%{transform:rotate(180deg) scale(1.05);filter:drop-shadow(0 0 60px rgba(255,107,157,0.6));}
-100%{transform:rotate(360deg) scale(1);filter:drop-shadow(0 0 20px rgba(255,107,157,0.3));}
-}
 @keyframes gradient-shift{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
@@ -53,6 +48,17 @@ to{opacity:1;transform:translateY(0) scale(1);}
 @keyframes modalBg{
 from{opacity:0;}
 to{opacity:1;}
+}
+@keyframes biohazard-spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+.biohazard{
+display:inline-block;
+animation:biohazard-spin 6s linear infinite;
+font-size:inherit;
+line-height:1;
+text-shadow:0 0 60px rgba(0,212,255,0.3);
 }
 
 body{
@@ -91,18 +97,6 @@ letter-spacing:-0.5px;
 color:#fff;
 text-shadow:0 0 20px rgba(255,255,255,0.3),0 0 60px rgba(255,255,255,0.05);
 flex-shrink:0;
-}
-
-.header .logo .biohazard{
-display:inline-block;
-font-size:26px;
-animation:biohazard-spin 4s ease-in-out infinite;
-background:linear-gradient(135deg, #ff6b9d, #ffd700, #ff0055);
-background-size:300% 300%;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:biohazard-spin 4s ease-in-out infinite, gradient-shift 3s ease-in-out infinite;
-filter:drop-shadow(0 0 30px rgba(255,107,157,0.2));
 }
 
 .header-right{
@@ -218,23 +212,11 @@ display:none;
 .hero-card .title{
 font-family:'Orbitron',sans-serif;
 font-weight:900;
-font-size:52px;
+font-size:64px;
 letter-spacing:-2px;
 line-height:1;
-display:flex;
-justify-content:center;
-align-items:center;
-gap:2px;
-}
-.hero-card .title .biohazard{
-display:inline-block;
-font-size:64px;
-background:linear-gradient(135deg, #ff6b9d, #ffd700, #ff0055);
-background-size:300% 300%;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:biohazard-spin 4s ease-in-out infinite, gradient-shift 3s ease-in-out infinite;
-filter:drop-shadow(0 0 40px rgba(255,107,157,0.2));
+color:#fff;
+filter:drop-shadow(0 0 40px rgba(0,212,255,0.15));
 }
 .hero-card .title .lang-text{
 display:inline-block;
@@ -282,6 +264,7 @@ transition:opacity 0.4s ease;
 .hero-card .desc .lang-text.hidden{
 display:none;
 }
+
 .cta-row{
 display:flex;
 gap:10px;
@@ -602,13 +585,12 @@ display:none;
 @media (max-width:400px){
 .container{padding:0;}
 .hero-card{padding:24px 16px;}
-.hero-card .title .biohazard{font-size:44px;}
+.hero-card .title{font-size:48px;}
 .cta-row{flex-direction:column;}
 .btn{width:100%;justify-content:center;}
 .server-item{padding:10px 0;}
 .header{flex-wrap:wrap;gap:8px;}
 .header .logo{font-size:18px;}
-.header .logo .biohazard{font-size:20px;}
 .header-right{gap:6px;}
 .lang-toggle .lang-option{font-size:8px;padding:3px 10px;}
 .modal{padding:24px 16px;}
@@ -632,7 +614,7 @@ animation:lang-slide 0.3s ease forwards;
 <div class="container">
 
 <div class="header">
-<div class="logo"><span class="biohazard">☣</span> AVALON</div>
+<div class="logo">AVALON</div>
 <div class="header-right">
 <div class="lang-toggle" id="langToggle" onclick="toggleLang()">
 <div class="lang-slider right" id="langSlider"></div>
@@ -649,9 +631,8 @@ animation:lang-slide 0.3s ease forwards;
 <span class="lang-text active" data-lang="eng">Multiplayer FPS</span>
 </div>
 <div class="title">
-<span class="biohazard">☣</span>
-<span class="lang-text hidden" data-lang="rus"></span>
-<span class="lang-text active" data-lang="eng"></span>
+<span class="lang-text hidden" data-lang="rus"><span class="biohazard">☣</span></span>
+<span class="lang-text active" data-lang="eng"><span class="biohazard">☣</span></span>
 </div>
 <div class="sub">
 <span class="lang-text hidden" data-lang="rus">First‑Person Shooter</span>
@@ -788,7 +769,7 @@ YouTube
 <span class="lang-text hidden" data-lang="rus">Ассистент (ZM сервер)</span>
 <span class="lang-text active" data-lang="eng">Assistant (ZM Server)</span>
 </div>
-<a href="https://t.me/meti_morina" target="_blank" class="contact">@meti_morina</a>
+<a href="https://t.me/metimorina" target="_blank" class="contact">@meti_morina</a>
 </div>
 
 </div>
